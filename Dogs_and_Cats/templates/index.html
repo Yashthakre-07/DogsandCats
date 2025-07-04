@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dog vs Cat Classifier</title>
+  <link rel="stylesheet" 
+      href="Dogs_and_Cats/static/css/style.css" 
+      type="text/css">
+
+</head>
+<body>
+  <div class="container">
+    <h1>🐶 vs 😺 Classifier</h1>
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+      <input type="file" name="file" accept="image/*" required />
+      <button type="submit" class="btn">Upload & Predict</button>
+    </form>
+    <form method="GET" class="random-form">
+      <button name="random" value="1" class="btn btn-secondary">Random Image</button>
+    </form>
+
+    {% if filename %}
+      <div class="result">
+        <h2>{{ prediction }}</h2>
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Result Image" />
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
